@@ -1,4 +1,4 @@
-// Count the number of Dynkin systems on sets of sizes 1, ..., n.
+// Count the number of Dynkin systems on sets of sizes 0, ..., n.
 // A Dynkin system on a set 𝛺 is a collection 𝒟 of subsets of 𝛺 that satisfies
 //      (i) ∅ ∈ 𝒟,
 //     (ii) 𝐴 ∈ 𝒟 ⟹ 𝛺-𝐴 ∈ 𝒟,
