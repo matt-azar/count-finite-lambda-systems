@@ -21,4 +21,4 @@ This Rust implementation mostly follows the approach used by the Mathoverflow us
 in the following post:
 <https://mathoverflow.net/questions/405736/what-is-the-number-of-finite-dynkin-systems?rq=1>
 
-His Python implementation calculates up to $n=7$ in about 40 seconds on my machine. This Rust implementation calculates up to $n=7$ in about 0.15 seconds and $n=8$ in about 24 hours on my machine. I've also included a C implementation that performs similarly to the Rust implementation but slightly slower.
+His Python implementation calculates up to $n=7$ in about 40 seconds on my machine. This Rust implementation calculates up to $n=7$ in about 0.15 seconds and $n=8$ in about 24 hours on my machine. I've also included a C implementation that performs similarly to the Rust implementation but slightly slower (in my limited experience, Rust is usually faster than C for basic mathematical operations -- presumably due to the language's strictness allowing for more aggressive compiler optimizations).
