@@ -1,6 +1,6 @@
 # Count finite lambda systems
 
-This is a Rust program that counts the number of finite lambda systems on a set of $n$ elements using brute force (but with several clever optimizations taken from Mathoverflow user Peter Taylor in a post linked below).
+This is a Rust program that counts the number of lambda systems on a set of $n$ elements using brute force (but with several clever optimizations taken from Mathoverflow user Peter Taylor in a post linked below).
 
 A Lambda system (or Dynkin system) on a set $X$ is a collection $\mathcal{D}$ of subsets of $X$ that satisfies
 
@@ -8,7 +8,9 @@ A Lambda system (or Dynkin system) on a set $X$ is a collection $\mathcal{D}$ of
 
 (b) If $A \in \mathcal{D}$, then $X \setminus A \in \mathcal{D}$,
 
-(c) If $A_1, A_2, \ldots$ are disjoint sets in $\mathcal{D}$, then $\bigcup_{i=1}^\infty A_i \in \mathcal{D}$.  
+(c) If $A_1, A_2, \ldots$ are pairwise disjoint sets in $\mathcal{D}$, then $\bigcup_{i=1}^\infty A_i \in \mathcal{D}$.  
+
+That is, a Dynkin system $\mathcal D$ on $X$ is a collection of subsets of $X$ that is closed under complements in $X$ and countable disjoint unions in $\mathcal D$.
 
 <https://en.wikipedia.org/wiki/Dynkin_system>
 
