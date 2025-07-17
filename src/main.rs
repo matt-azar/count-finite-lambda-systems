@@ -2,7 +2,7 @@
 // A Dynkin system on a set 𝛺 is a collection 𝒟 of subsets of 𝛺 that satisfies
 //      (i) ∅ ∈ 𝒟,
 //     (ii) 𝐴 ∈ 𝒟 ⟹ 𝛺-𝐴 ∈ 𝒟,
-//    (iii) if 𝐴1, 𝐴2, ... ∈ 𝒟 are disjoint, then A1 ⋃ A2 ⋃ ... ∈ 𝒟.
+//    (iii) if 𝐴1, 𝐴2, ... ∈ 𝒟 are disjoint, then 𝐴1 ⋃ 𝐴2 ⋃ ... ∈ 𝒟.
 //
 // This implementation mostly follows the approach used by the Mathoverflow user Peter Taylor
 // in the post linked below:
@@ -143,7 +143,6 @@ fn inner(
     let mut count: usize = 1;
     let limit: usize = (omega + 1) >> 1;
 
-    // local queue for closure extension
     let mut queue_local: Queue = Queue {
         data: [0; MAX_SUBSETS],
         len: 0,
@@ -154,7 +153,6 @@ fn inner(
             continue;
         }
 
-        // Inclusion branch
         let mut closure = [0u64; BITSET_WORDS];
         queue_local.clear();
         if extend_closure(omega, included, x, excluded, &mut closure, &mut queue_local) {
@@ -169,7 +167,6 @@ fn inner(
             );
         }
 
-        // Exclusion branch
         bs_set(excluded, x);
         bs_set(excluded, omega ^ x); // 𝛺-x
     }
@@ -178,17 +175,15 @@ fn inner(
 }
 
 fn main() {
-    // Calculate number of Dynkin systems for each set size
     for n in 0..=MAX_N {
         let omega: usize = if n > 0 { (1 << n) - 1 } else { 0 };
 
-        // Initial included bitset: {∅, 𝛺}
+        // Every Dynkin system contains ∅ and 𝛺
         let mut included = [0u64; BITSET_WORDS];
         bs_clear(&mut included);
         bs_set(&mut included, 0);
         bs_set(&mut included, omega);
 
-        // Prepare root_excluded array up to halfway
         let limit = (omega + 1) >> 1;
         let mut root_excluded = vec![[0u64; BITSET_WORDS]; limit];
         for m in 1..limit {
@@ -197,7 +192,6 @@ fn main() {
             bs_set(&mut root_excluded[m], omega ^ m);
         }
 
-        // Parallel over m choices
         use rayon::prelude::*;
         let sum: usize = (1..limit)
             .into_par_iter()
@@ -205,7 +199,6 @@ fn main() {
                 if bs_get(&included, m) || bs_get(&root_excluded[m - 1], m) {
                     return 0;
                 }
-                // Build closure and count branch
                 let mut closure = [0u64; BITSET_WORDS];
                 let mut queue: Queue = Queue {
                     data: [0; MAX_SUBSETS],
