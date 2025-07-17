@@ -5,7 +5,9 @@ This is a Rust program that counts the number of finite lambda systems on a set 
 A Lambda system (or Dynkin system) on a set $X$ is a collection $\mathcal{D}$ of subsets of $X$ that satisfies
 
 (a) $\varnothing \in \mathcal{D}$,  
+
 (b) If $A \in \mathcal{D}$, then $X \setminus A \in \mathcal{D}$,
+
 (c) If $A_1, A_2, \ldots$ are disjoint, then $\bigcup_{i=1}^\infty A_i \in \mathcal{D}$.  
 
 This implementation mostly follows the approach used by the Mathoverflow user Peter Taylor
