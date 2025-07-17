@@ -1,8 +1,8 @@
 // Count the number of Dynkin systems on sets of sizes 1, ..., n.
-// A Dynkin system on a set X is a collection D of subsets of X that satisfies
-//      (i) ∅ ∈ D,
-//     (ii) if A ∈ D, then X-A ∈ D,
-//    (iii) if A1, A2, ... ∈ D are disjoint, then ⋃ Ai ∈ D.
+// A Dynkin system on a set 𝛺 is a collection 𝒟 of subsets of 𝛺 that satisfies
+//      (i) ∅ ∈ 𝒟,
+//     (ii) 𝐴 ∈ 𝒟 ⟹ 𝛺-𝐴 ∈ 𝒟,
+//    (iii) if 𝐴1, 𝐴2, ... ∈ 𝒟 are disjoint, then A1 ⋃ A2 ⋃ ... ∈ 𝒟.
 //
 // This implementation mostly follows the approach used by the Mathoverflow user Peter Taylor
 // in the post linked below:
@@ -171,7 +171,7 @@ fn inner(
 
         // Exclusion branch
         bs_set(excluded, x);
-        bs_set(excluded, omega ^ x); // D-x
+        bs_set(excluded, omega ^ x); // 𝛺-x
     }
 
     count
@@ -182,7 +182,7 @@ fn main() {
     for n in 0..=MAX_N {
         let omega: usize = if n > 0 { (1 << n) - 1 } else { 0 };
 
-        // Initial included bitset: {∅, X}
+        // Initial included bitset: {∅, 𝛺}
         let mut included = [0u64; BITSET_WORDS];
         bs_clear(&mut included);
         bs_set(&mut included, 0);
