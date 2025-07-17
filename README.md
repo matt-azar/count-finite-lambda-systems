@@ -1,4 +1,4 @@
-# Count finite lambda systems
+# Finite lambda systems counter
 
 This is a Rust program that counts the number of lambda systems on a set of $n$ elements using brute force (but with several clever optimizations taken from Mathoverflow user Peter Taylor in a post linked below).
 
@@ -21,5 +21,4 @@ This Rust implementation mostly follows the approach used by the Mathoverflow us
 in the following post:
 <https://mathoverflow.net/questions/405736/what-is-the-number-of-finite-dynkin-systems?rq=1>
 
-His Python implementation calculates up to $n=7$ in about 40 seconds on my machine. This
-Rust implementation calculates up to $n=7$ in about 0.15 seconds on my machine. I've also included a C implementation that performs similarly to the Rust implementation.
+His Python implementation calculates up to $n=7$ in about 40 seconds on my machine. This Rust implementation calculates up to $n=7$ in about 0.15 seconds and $n=8$ in about 24 hours on my machine. I've also included a C implementation that performs similarly to the Rust implementation.
