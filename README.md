@@ -14,7 +14,7 @@ That is, a Dynkin system $\mathcal D$ on $X$ is a collection of subsets of $X$ t
 
 <https://en.wikipedia.org/wiki/Dynkin_system>
 
-Currently, only the first nine values are known ($n=0,...,8$).
+Currently, only the first nine values are known ($n=0,...,8$):
 <https://oeis.org/A380571>
 
 This Rust implementation mostly follows the approach used by the Mathoverflow user Peter Taylor
