@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["BITSET_WORDS","MAX_N","MAX_SUBSETS"],"fn":["bs_clear","bs_copy","bs_get","bs_set","extend_closure","inner","main"],"struct":["Queue"],"type":["Bitset"]};
