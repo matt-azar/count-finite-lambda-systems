@@ -3,11 +3,11 @@
 This is a Rust program that counts the number of finite lambda systems on a set of $n$ elements.
 
 A Lambda system (or Dynkin system) on a set $X$ is a collection $\mathcal D$ of subsets of $X$ that satisfies
-\begin{itemize}
+\begin{enumerate}
   \item $\varnothing \in \mathcal D$,
   \item if $A \in \mathcal D$, then $X \setminus A \in \mathcal D$,
   \item if $A_1, A_2, \ldots \in \mathcal D$ are disjoint, then $\bigcup A_i \in \mathcal D$.
-\end{itemize}
+\end{enumerate}
 
 This implementation mostly follows the approach used by the Mathoverflow user Peter Taylor
 in the post linked below:
