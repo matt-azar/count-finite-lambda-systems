@@ -12,7 +12,7 @@ A Lambda system (or Dynkin system) on a set $X$ is a collection $\mathcal{D}$ of
 
 This implementation mostly follows the approach used by the Mathoverflow user Peter Taylor
 in the post linked below:
-https://mathoverflow.net/questions/405736/what-is-the-number-of-finite-dynkin-systems?rq=1
+<https://mathoverflow.net/questions/405736/what-is-the-number-of-finite-dynkin-systems?rq=1>
 
 His Python implementation calculates up to $n=7$ in about 40 seconds on my machine. This
 Rust implementation calculates up to $n=7$ in about 0.15 seconds on my machine. I've also included a C implementation that performs similarly to the Rust implementation.
