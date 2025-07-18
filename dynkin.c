@@ -84,10 +84,11 @@ static int extend_closure(uint32_t omega, const Bitset *included,
 }
 
 // Serial inner enumeration
-static size_t inner(uint32_t omega, uint32_t lb, Bitset *included,
+static size_t inner(uint32_t omega, uint32_t limit, uint32_t lb, Bitset *included,
                     Bitset *excluded) {
+
     size_t count = 1;
-    uint32_t limit = (omega + 1) >> 1;
+    // uint32_t limit = (omega + 1) >> 1;
 
     Bitset new_inc, new_exc, closure;
     for (uint32_t m = lb; m < limit; ++m) {
@@ -96,7 +97,7 @@ static size_t inner(uint32_t omega, uint32_t lb, Bitset *included,
         if (extend_closure(omega, included, m, excluded, &closure)) {
             bs_copy(&new_inc, &closure);
             bs_copy(&new_exc, excluded);
-            count += inner(omega, m + 1, &new_inc, &new_exc);
+            count += inner(omega, limit, m + 1, &new_inc, &new_exc);
         }
         bs_set(excluded, m);
         bs_set(excluded, omega ^ m);
@@ -155,7 +156,7 @@ int main(void) {
                 bs_set(&new_exc, m);
                 bs_set(&new_exc, omega ^ m);
 
-                total += inner(omega, m + 1, &closure, &new_exc);
+                total += inner(omega, limit, m + 1, &closure, &new_exc);
             }
         }
 

@@ -134,6 +134,7 @@ fn extend_closure(
 /// Returns the count of valid subsets of the closure.
 fn inner(
     omega: usize,
+    limit: usize,
     lower_bound: usize,
     included: &Bitset,
     excluded: &mut Bitset,
@@ -141,7 +142,7 @@ fn inner(
     depth: usize,
 ) -> usize {
     let mut count: usize = 1;
-    let limit: usize = (omega + 1) >> 1;
+    // let limit: usize = (omega + 1) >> 1;
 
     let mut queue_local: Queue = Queue {
         data: [0; MAX_SUBSETS],
@@ -159,6 +160,7 @@ fn inner(
             let mut new_excluded = *excluded;
             count += inner(
                 omega,
+                limit,
                 x + 1,
                 &closure,
                 &mut new_excluded,
@@ -210,7 +212,7 @@ fn main() {
                     let mut new_exc = *ex_here;
                     bs_set(&mut new_exc, m);
                     bs_set(&mut new_exc, omega ^ m);
-                    count += inner(omega, m + 1, &closure, &mut new_exc, &mut queue, 0);
+                    count += inner(omega, limit, m + 1, &closure, &mut new_exc, &mut queue, 0);
                 }
                 count
             })
